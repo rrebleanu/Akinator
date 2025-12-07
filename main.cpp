@@ -327,7 +327,7 @@ private:
 public:
     JocAkinator() = default;
 
-    void ruleazaSilențios(std::istream& is, std::ostream& os) {
+    void ruleazaSilentios(std::istream& is, std::ostream& os) {
         std::string tema;
 
         if (!(is >> tema)) {
@@ -349,6 +349,7 @@ public:
             os << "Eroare: " << e.what() << "\n";
         }
     }
+
 };
 
 // -----------------------------------------------------------
@@ -371,7 +372,7 @@ int main() {
 
     JocAkinator joc;
 
-    joc.ruleazaSilențios(is, buffer);
+    joc.ruleazaSilentios(is, buffer);
 
     os << buffer.str();
 
