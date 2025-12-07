@@ -7,9 +7,9 @@
 #include <map>
 #include <algorithm>
 #include <utility>
-#include "external/nlohmann/json.hpp" // Includem biblioteca JSON
+#include "external/nlohmann/json.hpp"
 
-using json = nlohmann::json; // Alias pentru a simplifica utilizarea JSON
+using json = nlohmann::json;
 
 // Declaratii forward
 class Entitate;
@@ -18,7 +18,6 @@ class ArboreAkinator;
 class JocAkinator;
 class ManagerRaspunsuri;
 
-// Numele fișierelor de intrare/ieșire
 const std::string FISIER_INTRARE = "tastatura.txt";
 const std::string FISIER_IESIRE = "raspuns.txt";
 
@@ -26,13 +25,10 @@ const std::string FISIER_IESIRE = "raspuns.txt";
 // 1. SIMULARE BIBLIOTECI EXTERNE (R3)
 // -----------------------------------------------------------
 
-void primaBibliotecaExterna() {
-    // Simulare.
-}
-
+void primaBibliotecaExterna() {}
 void aDouaBibliotecaExterna(std::ostream& os, const std::string& data) {
-    (void)data; // Suprimă warning-ul "unused parameter"
-    (void)os;   // Suprimă warning-ul "unused parameter"
+    (void)data;
+    (void)os;
 }
 
 // -----------------------------------------------------------
@@ -73,11 +69,9 @@ public:
         delete ghicitoare_;
     }
 
-    // R3: CONSTRUCTOR DE COPIERE (Deep Copy pentru Entitate)
+    // R3: CONSTRUCTOR DE COPIERE (Deep Copy Entitate)
     Nod(const Nod& other) :
-        intrebare(other.intrebare),
-        da(nullptr),
-        nu(nullptr)
+        intrebare(other.intrebare), da(nullptr), nu(nullptr)
     {
         if (other.ghicitoare_) {
             ghicitoare_ = new Entitate(*other.ghicitoare_);
@@ -106,10 +100,9 @@ public:
 
 class ArboreAkinator {
 private:
-    Nod* radacina_ = nullptr;
-    std::string tema_;
+    Nod* radacina_ = nullptr; // Membru declarat PRIMUL
+    std::string tema_;          // Membru declarat AL DOILEA
 
-    // Functii R3 (elibereazaMemorie, cloneNodRecursiv) - Neincluse din motive de spațiu, dar sunt cele corectate.
     void elibereazaMemorie(Nod* nod) {
         if (nod == nullptr) return;
         elibereazaMemorie(nod->da);
@@ -125,14 +118,10 @@ private:
         return nod_nou;
     }
 
-    // NOU: Funcție recursivă de parsare JSON
     Nod* parsezNodJSON(const json& j) {
-        if (j.is_null()) {
-            return nullptr;
-        }
+        if (j.is_null()) return nullptr;
 
         if (j.contains("entitate")) {
-            // Este Nod frunză (Entitate)
             const auto& entitate_json = j.at("entitate");
             Entitate* e = new Entitate(
                 entitate_json.at("nume").get<std::string>(),
@@ -141,10 +130,8 @@ private:
             );
             return new Nod(e);
         } else if (j.contains("intrebare")) {
-            // Este Nod intern (Întrebare)
             Nod* n = new Nod(j.at("intrebare").get<std::string>());
 
-            // Parsare recursivă a copiilor
             if (j.contains("da")) {
                 n->da = parsezNodJSON(j.at("da"));
             }
@@ -153,7 +140,7 @@ private:
             }
             return n;
         }
-        return nullptr; // Nod invalid
+        return nullptr;
     }
 
 public:
@@ -163,11 +150,14 @@ public:
     // R3: DESTRUCTOR
     ~ArboreAkinator() { elibereazaMemorie(radacina_); radacina_ = nullptr; }
 
-    // R3: CONSTRUCTOR DE COPIERE
+    // R3: CONSTRUCTOR DE COPIERE (ORDINE CORECTATĂ)
     ArboreAkinator(const ArboreAkinator& other) :
-        tema_(other.tema_), radacina_(cloneNodRecursiv(other.radacina_)) {}
+        // Inițializăm în ordinea în care sunt declarați: radacina_ apoi tema_
+        radacina_(cloneNodRecursiv(other.radacina_)),
+        tema_(other.tema_)
+    {}
 
-    // R3: OPERATOR DE ATRIBUIRE (Copy and Swap Idiom)
+    // R3: OPERATOR DE ATRIBUIRE
     ArboreAkinator& operator=(ArboreAkinator other) {
         std::swap(radacina_, other.radacina_);
         std::swap(tema_, other.tema_);
@@ -179,29 +169,24 @@ public:
     ArboreAkinator& operator=(ArboreAkinator&& other) noexcept = default;
 
 
-    // FUNCTIE ACTUALIZATA: Incarcă arborele din JSON
     void incarcaDinFisier(const std::string& nume_fisier) {
         std::ifstream f(nume_fisier);
         if (!f.is_open()) {
-            throw std::runtime_error("Eroare: Nu s-a putut deschide fisierul JSON: " + nume_fisier);
+             return;
         }
 
         try {
             json data = json::parse(f);
             if (data.contains("radacina")) {
-                // Elibereaza arborele vechi (dacă există)
-                if (radacina_) {
-                    elibereazaMemorie(radacina_);
-                }
-                // Incepe parsarea recursiva a noului arbore
+                if (radacina_) { elibereazaMemorie(radacina_); }
                 radacina_ = parsezNodJSON(data.at("radacina"));
             }
         } catch (json::parse_error& e) {
-            throw std::runtime_error("Eroare la parsarea JSON din " + nume_fisier + ": " + e.what());
+             throw std::runtime_error("Eroare la parsarea JSON din " + nume_fisier + ": " + e.what());
         }
     }
 
-    // Functie modificată pentru a citi din istream și a scrie în ostream
+    // Functia de ghicire
     const Entitate* determinaEntitatea(std::istream& is, std::ostream& os) const {
         Nod* curent = radacina_;
         std::string raspuns;
@@ -211,7 +196,7 @@ public:
             aDouaBibliotecaExterna(os, curent->intrebare);
 
             if (!(is >> raspuns)) {
-                os << "Eroare la citirea raspunsului." << std::endl;
+                os << "Eroare la citirea raspunsului din fisier." << std::endl;
                 return nullptr;
             }
 
@@ -227,7 +212,7 @@ public:
         if (curent != nullptr && curent->ghicitoare_ != nullptr) {
             os << "M-am gandit la: " << curent->ghicitoare_->nume << ". E corect (da/nu)?" << std::endl;
             if (!(is >> raspuns)) {
-                os << "Eroare la citirea raspunsului final." << std::endl;
+                os << "Eroare la citirea raspunsului final din fisier." << std::endl;
                 return nullptr;
             }
 
@@ -238,16 +223,12 @@ public:
         return nullptr;
     }
 
-    // Functii utilitare...
     int calculeazaAdancime(Nod* nod) const {
         if (nod == nullptr) return 0;
         return 1 + std::max(calculeazaAdancime(nod->da), calculeazaAdancime(nod->nu));
     }
-    int calculeazaAdancime() const {
-        return calculeazaAdancime(radacina_);
-    }
+    int calculeazaAdancime() const { return calculeazaAdancime(radacina_); }
     const std::string& getTema() const { return tema_; }
-    // ...
 
     friend std::ostream& operator<<(std::ostream& os, const ArboreAkinator& arbore) {
         if (arbore.radacina_ != nullptr) {
@@ -274,13 +255,11 @@ public:
         teme_.emplace("tari", ArboreAkinator("tari"));
         teme_.emplace("vedete", ArboreAkinator("vedete"));
 
-        // Incarca arborele pentru fiecare tema (necesar pentru R3 si afisare adancime)
         for (auto& pair : teme_) {
-            // Notă: Poate eșua dacă celelalte fișiere json nu există/sunt invalide
             try {
                 pair.second.incarcaDinFisier(pair.first + "_arbore.json");
-            } catch (const std::runtime_error&) {
-                // Ignoram eroarea pentru temele care nu sunt testate
+            } catch (const std::runtime_error& e) {
+                 std::cerr << "Atentie: " << e.what() << std::endl;
             }
         }
     }
@@ -316,7 +295,6 @@ public:
         if (teme_.count(tema)) {
             delete arbore_curent_;
             arbore_curent_ = new ArboreAkinator(teme_.at(tema));
-            // Incarca arborele specific din JSON pentru joc
             arbore_curent_->incarcaDinFisier(tema + "_arbore.json");
         } else {
             throw std::runtime_error("Tema nu exista.");
@@ -352,7 +330,6 @@ public:
     void ruleazaSilențios(std::istream& is, std::ostream& os) {
         std::string tema;
 
-        // 1. Citeste tema (prima linie din tastatura.txt)
         if (!(is >> tema)) {
             os << "Eroare: Nu s-a putut citi tema din fisier." << std::endl;
             return;
@@ -361,10 +338,8 @@ public:
         try {
             manager_.selecteazaTema(tema);
 
-            // 2. Rularea jocului si citirea raspunsurilor din fisier
             const Entitate* rezultat = manager_.getArboreCurent()->determinaEntitatea(is, os);
 
-            // 3. Scrie rezultatul final pe prima linie
             if (rezultat != nullptr) {
                 os << rezultat->nume << "\n";
             } else {
@@ -384,25 +359,20 @@ int main() {
     std::ios_base::sync_with_stdio(false);
     std::cin.tie(NULL);
 
-    // 1. Deschide fluxurile de intrare/ieșire direct din main
     std::ifstream is(FISIER_INTRARE);
     std::ofstream os(FISIER_IESIRE);
 
     if (!is.is_open() || !os.is_open()) {
-        std::cerr << "Eroare: Asigurati-va ca fisierele " << FISIER_INTRARE
-                  << " si " << FISIER_IESIRE << " exista in directorul executabilului." << std::endl;
+        std::cerr << "Eroare critica: Fisierele de I/O (tastatura.txt, raspuns.txt) nu sunt deschise corect." << std::endl;
         return 1;
     }
 
-    // Salvează poziția curentă pentru a scrie rezultatul final la început
     std::stringstream buffer;
 
     JocAkinator joc;
 
-    // Rularea Jocului (I/O bazat pe fișiere)
-    joc.ruleazaSilențios(is, buffer); // Rulează in buffer
+    joc.ruleazaSilențios(is, buffer);
 
-    // Scrie conținutul buffer-ului în fisierul de ieșire
     os << buffer.str();
 
     // Verificari Structura & R3
