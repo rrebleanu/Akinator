@@ -32,7 +32,7 @@ void aDouaBibliotecaExterna(std::ostream& os, const std::string& data) {
 }
 
 // -----------------------------------------------------------
-// 2. STRUCTURI DE DATE
+// 2. STRUCTURI DATE
 // -----------------------------------------------------------
 
 class Entitate {
