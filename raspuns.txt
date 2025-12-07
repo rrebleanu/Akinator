@@ -8,4 +8,6 @@ M-am gandit la: Egipt. E corect (da/nu)?
 Egipt
 
 --- Verificari Structura & R3 ---
+Tema manager original: tari
 Repo copiat: ManagerRaspunsuri{ teme=[animale(7 noduri), tari(8 noduri), vedete(0 noduri)] }
+Arbore curent (Adancime): 8

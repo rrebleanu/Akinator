@@ -61,8 +61,9 @@ public:
     Nod* da = nullptr;
     Nod* nu = nullptr;
 
-    Nod(Entitate* e) : ghicitoare_(e) {}
-    Nod(std::string q) : intrebare(std::move(q)) {}
+    // CORECTIE Cppcheck: Adăugăm explicit
+    explicit Nod(Entitate* e) : ghicitoare_(e) {}
+    explicit Nod(std::string q) : intrebare(std::move(q)) {}
 
     // R3: DESTRUCTOR
     ~Nod() {
@@ -100,8 +101,8 @@ public:
 
 class ArboreAkinator {
 private:
-    Nod* radacina_ = nullptr; // Membru declarat PRIMUL
-    std::string tema_;          // Membru declarat AL DOILEA
+    Nod* radacina_ = nullptr;
+    std::string tema_;
 
     void elibereazaMemorie(Nod* nod) {
         if (nod == nullptr) return;
@@ -144,7 +145,8 @@ private:
     }
 
 public:
-    ArboreAkinator(std::string tema) : tema_(std::move(tema)) {}
+    // CORECTIE Cppcheck: Adăugăm explicit
+    explicit ArboreAkinator(std::string tema) : tema_(std::move(tema)) {}
     ArboreAkinator() : tema_("Necunoscuta") {}
 
     // R3: DESTRUCTOR
@@ -152,7 +154,6 @@ public:
 
     // R3: CONSTRUCTOR DE COPIERE (ORDINE CORECTATĂ)
     ArboreAkinator(const ArboreAkinator& other) :
-        // Inițializăm în ordinea în care sunt declarați: radacina_ apoi tema_
         radacina_(cloneNodRecursiv(other.radacina_)),
         tema_(other.tema_)
     {}
@@ -246,7 +247,7 @@ public:
 
 class ManagerRaspunsuri {
 private:
-    std::map<std::string, ArboreAkinator> teme_;
+    std::map<std::string, ArboreAkinator> teme_; // Membru privat
     ArboreAkinator* arbore_curent_ = nullptr;
 
 public:
@@ -327,7 +328,7 @@ private:
 public:
     JocAkinator() = default;
 
-    void ruleazaSilențios(std::istream& is, std::ostream& os) {
+    void ruleazaSilentios(std::istream& is, std::ostream& os) {
         std::string tema;
 
         if (!(is >> tema)) {
@@ -349,6 +350,7 @@ public:
             os << "Eroare: " << e.what() << "\n";
         }
     }
+
 };
 
 // -----------------------------------------------------------
@@ -371,17 +373,35 @@ int main() {
 
     JocAkinator joc;
 
-    joc.ruleazaSilențios(is, buffer);
+    joc.ruleazaSilentios(is, buffer);
 
     os << buffer.str();
 
     // Verificari Structura & R3
     ManagerRaspunsuri manager_original;
+
+    // CORECTIE: Rezolvă eroarea 'teme_ is private' și unused function
+    os << "\n--- Verificari Structura & R3 ---" << std::endl;
+    // Setăm arborele curent la "tari" prin metoda publică selecteazaTema
+    try {
+        manager_original.selecteazaTema("tari");
+    } catch (const std::runtime_error& e) {
+        std::cerr << "Eroare la selectarea temei (R3 Check): " << e.what() << std::endl;
+    }
+
+    const ArboreAkinator* arbore_original = manager_original.getArboreCurent();
+
+    if (arbore_original != nullptr) {
+        // Apelăm getTema() pe arborele curent pentru a rezolva unusedFunction
+        os << "Tema manager original: " << arbore_original->getTema() << std::endl;
+    } else {
+        os << "Tema manager original: [Arbore Curent Gol]" << std::endl;
+    }
+
     ManagerRaspunsuri manager_copie = manager_original;
     ManagerRaspunsuri manager_atribuire;
     manager_atribuire = manager_original;
 
-    os << "\n--- Verificari Structura & R3 ---" << std::endl;
     os << "Repo copiat: " << manager_copie << std::endl;
 
     const ArboreAkinator* arbore_curent_copie = manager_copie.getArboreCurent();
