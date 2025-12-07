@@ -49,7 +49,7 @@ include(cmake/CopyHelper.cmake)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
 add_executable(${MAIN_EXECUTABLE_NAME}
-    main.cpp
+        main.cpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
@@ -60,6 +60,12 @@ set_compiler_flags(RUN_SANITIZERS TRUE TARGET_NAMES ${MAIN_EXECUTABLE_NAME})
 # you want to compile with the set compiler flags
 
 ###############################################################################
+
+# LINIE NOUA 1: ADAUGĂ DIRECTORUL RĂDĂCINĂ PENTRU A GĂSI "external/nlohmann/json.hpp"
+target_include_directories(${MAIN_EXECUTABLE_NAME}
+        PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 # use SYSTEM so cppcheck and clang-tidy do not report warnings from these directories
 # target_include_directories(${MAIN_EXECUTABLE_NAME} SYSTEM PRIVATE ext/<SomeHppLib>/include)
@@ -76,6 +82,11 @@ if(APPLE)
     install(FILES launcher.command DESTINATION ${DESTINATION_DIR})
 endif()
 
+# COPIAZĂ TASTATURA.TXT
 copy_files(FILES tastatura.txt COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
+
+# LINIE NOUA 2: COPIAZĂ FIȘIERELE JSON NECESARE
+copy_files(FILES tari_arbore.json animale_arbore.json vedeta_arbore.json COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
+
 # copy_files(FILES tastatura.txt config.json DIRECTORY images sounds COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})
 # copy_files(DIRECTORY images sounds COPY_TO_DESTINATION TARGET_NAME ${MAIN_EXECUTABLE_NAME})

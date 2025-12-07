@@ -1,0 +1,124 @@
+{
+  "valoare": "Țara este localizată în Eurasia?",
+  "tip": "intrebare",
+  "da":     {
+      "valoare": "Se află pe o insulă mare sau arhipelag?",
+      "tip": "intrebare",
+      "da":         {
+          "valoare": "Este localizată în Marea Mediterană?",
+          "tip": "intrebare",
+          "da":             {
+              "valoare": "Cipru",
+              "tip": "ghicitoare"
+            },
+          "nu":             {
+              "valoare": "Are o origine vulcanică faimoasă (Islanda)?",
+              "tip": "intrebare",
+              "da":                 {
+                  "valoare": "Islanda",
+                  "tip": "ghicitoare"
+                },
+              "nu":                 {
+                  "valoare": "Japonia",
+                  "tip": "ghicitoare"
+                }
+            }
+        },
+      "nu":         {
+          "valoare": "Este localizată în Asia de Sud-Vest (Orientul Mijlociu)?",
+          "tip": "intrebare",
+          "da":             {
+              "valoare": "Este o monarhie absolută?",
+              "tip": "intrebare",
+              "da":                 {
+                  "valoare": "Arabia Saudită",
+                  "tip": "ghicitoare"
+                },
+              "nu":                 {
+                  "valoare": "Are acces la Marea Roșie?",
+                  "tip": "intrebare",
+                  "da":                     {
+                      "valoare": "Yemen",
+                      "tip": "ghicitoare"
+                    },
+                  "nu":                     {
+                      "valoare": "Iran",
+                      "tip": "ghicitoare"
+                    }
+                }
+            },
+          "nu":             {
+              "valoare": "Este localizată în Europa de Est (fostă URSS)?",
+              "tip": "intrebare",
+              "da":                 {
+                  "valoare": "A fost un stat Baltic?",
+                  "tip": "intrebare",
+                  "da":                     {
+                      "valoare": "Estonia",
+                      "tip": "ghicitoare"
+                    },
+                  "nu":                     {
+                      "valoare": "Are o legendă faimoasă despre vampiri (România)?",
+                      "tip": "intrebare",
+                      "da":                         {
+                          "valoare": "Romania",
+                          "tip": "ghicitoare"
+                        },
+                      "nu":                         {
+                          "valoare": "Ucraina",
+                          "tip": "ghicitoare"
+                        }
+                    }
+                },
+              "nu":                 {
+                  "valoare": "Italia",
+                  "tip": "ghicitoare"
+                }
+            }
+        }
+    },
+  "nu":     {
+      "valoare": "Este localizată în America?",
+      "tip": "intrebare",
+      "da":         {
+          "valoare": "Se află în America de Sud?",
+          "tip": "intrebare",
+          "da":             {
+              "valoare": "Se află în Munții Anzi?",
+              "tip": "intrebare",
+              "da":                 {
+                  "valoare": "Columbia",
+                  "tip": "ghicitoare"
+                },
+              "nu":                 {
+                  "valoare": "Brazilia",
+                  "tip": "ghicitoare"
+                }
+            },
+          "nu":             {
+              "valoare": "Canada",
+              "tip": "ghicitoare"
+            }
+        },
+      "nu":         {
+          "valoare": "Este localizată în Africa?",
+          "tip": "intrebare",
+          "da":             {
+              "valoare": "Are acces la Marea Mediterană?",
+              "tip": "intrebare",
+              "da":                 {
+                  "valoare": "Egipt",
+                  "tip": "ghicitoare"
+                },
+              "nu":                 {
+                  "valoare": "Nigeria",
+                  "tip": "ghicitoare"
+                }
+            },
+          "nu":             {
+              "valoare": "Australia",
+              "tip": "ghicitoare"
+            }
+        }
+    }
+}

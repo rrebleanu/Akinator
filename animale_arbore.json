@@ -1,0 +1,80 @@
+{
+  "tema": "animale",
+  "radacina": {
+    "intrebare": "Este mamifer?",
+    "da": {
+      "intrebare": "Trăiește preponderent în apă?",
+      "da": {
+        "intrebare": "Este un prădător rapid din familia delfinidelor?",
+        "da": { "entitate": { "nume": "Orcă", "domeniu": "animal", "tip": "mamifer marin" } },
+        "nu": {
+          "intrebare": "Este cel mai mare animal de pe planetă?",
+          "da": { "entitate": { "nume": "Balenă albastră", "domeniu": "animal", "tip": "mamifer marin" } },
+          "nu": { "entitate": { "nume": "Delfin", "domeniu": "animal", "tip": "mamifer marin" } }
+        }
+      },
+      "nu": {
+        "intrebare": "Este un prădător de savană?",
+        "da": {
+          "intrebare": "Are coamă vizibilă?",
+          "da": { "entitate": { "nume": "Leu", "domeniu": "animal", "tip": "mamifer terestru" } },
+          "nu": { "entitate": { "nume": "Ghepard", "domeniu": "animal", "tip": "mamifer terestru" } }
+        },
+        "nu": {
+          "intrebare": "Are gât foarte lung?",
+          "da": { "entitate": { "nume": "Girafă", "domeniu": "animal", "tip": "mamifer terestru" } },
+          "nu": {
+            "intrebare": "Este un animal masiv cu fildeși?",
+            "da": { "entitate": { "nume": "Elefant african", "domeniu": "animal", "tip": "mamifer terestru" } },
+            "nu": {
+              "intrebare": "Trăiește preponderent în regiuni polare?",
+              "da": { "entitate": { "nume": "Urs polar", "domeniu": "animal", "tip": "mamifer terestru" } },
+              "nu": { "entitate": { "nume": "Zebru", "domeniu": "animal", "tip": "mamifer terestru" } }
+            }
+          }
+        }
+      }
+    },
+    "nu": {
+      "intrebare": "Este o pasăre?",
+      "da": {
+        "intrebare": "Este o pasăre răpitoare?",
+        "da": {
+          "intrebare": "Are anvergură foarte mare (≈2m)?",
+          "da": { "entitate": { "nume": "Vultur codalb", "domeniu": "animal", "tip": "pasăre răpitoare" } },
+          "nu": { "entitate": { "nume": "Șoim călător", "domeniu": "animal", "tip": "pasăre răpitoare" } }
+        },
+        "nu": {
+          "intrebare": "Nu zboară, dar înoată excelent?",
+          "da": { "entitate": { "nume": "Pinguin imperial", "domeniu": "animal", "tip": "pasăre" } },
+          "nu": { "entitate": { "nume": "Papagal ara", "domeniu": "animal", "tip": "pasăre" } }
+        }
+      },
+      "nu": {
+        "intrebare": "Este o reptilă?",
+        "da": {
+          "intrebare": "Are picioare dezvoltate?",
+          "da": { "entitate": { "nume": "Iguana verde", "domeniu": "animal", "tip": "reptilă" } },
+          "nu": {
+            "intrebare": "Este un șarpe constrictor?",
+            "da": { "entitate": { "nume": "Piton", "domeniu": "animal", "tip": "reptilă" } },
+            "nu": { "entitate": { "nume": "Cobra regală", "domeniu": "animal", "tip": "reptilă" } }
+          }
+        },
+        "nu": {
+          "intrebare": "Este o insectă?",
+          "da": {
+            "intrebare": "Polenizează frecvent florile?",
+            "da": { "entitate": { "nume": "Albină", "domeniu": "animal", "tip": "insectă" } },
+            "nu": { "entitate": { "nume": "Călugărița", "domeniu": "animal", "tip": "insectă" } }
+          },
+          "nu": {
+            "intrebare": "Trăiește preponderent în apă dulce?",
+            "da": { "entitate": { "nume": "Crap comun", "domeniu": "animal", "tip": "pește de apă dulce" } },
+            "nu": { "entitate": { "nume": "Broască râioasă", "domeniu": "animal", "tip": "amfibian" } }
+          }
+        }
+      }
+    }
+  }
+}

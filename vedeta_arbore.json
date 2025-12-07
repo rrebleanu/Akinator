@@ -1,0 +1,69 @@
+
+{
+  "tema": "vedete",
+  "radacina": {
+    "intrebare": "Este actor/actriță?",
+    "da": {
+      "intrebare": "A câștigat Oscar pentru rol principal?",
+      "da": {
+        "intrebare": "Este bărbat?",
+        "da": { "entitate": { "nume": "Leonardo DiCaprio", "domeniu": "vedetă", "tip": "actor" } },
+        "nu": { "entitate": { "nume": "Meryl Streep", "domeniu": "vedetă", "tip": "actriță" } }
+      },
+      "nu": {
+        "intrebare": "Este cunoscut/ă pentru francize de acțiune?",
+        "da": {
+          "intrebare": "A jucat în seria 'Matrix'?",
+          "da": { "entitate": { "nume": "Keanu Reeves", "domeniu": "vedetă", "tip": "actor" } },
+          "nu": {
+            "intrebare": "A interpretat personajul 'Ethan Hunt'?",
+            "da": { "entitate": { "nume": "Tom Cruise", "domeniu": "vedetă", "tip": "actor" } },
+            "nu": { "entitate": { "nume": "Scarlett Johansson", "domeniu": "vedetă", "tip": "actriță" } }
+          }
+        },
+        "nu": {
+          "intrebare": "Este asociat/ă puternic cu filme de comedie?",
+          "da": { "entitate": { "nume": "Adam Sandler", "domeniu": "vedetă", "tip": "actor" } },
+          "nu": { "entitate": { "nume": "Ryan Gosling", "domeniu": "vedetă", "tip": "actor" } }
+        }
+      }
+    },
+    "nu": {
+      "intrebare": "Este cântăreț/cântăreață?",
+      "da": {
+        "intrebare": "A câștigat multiple premii Grammy?",
+        "da": {
+          "intrebare": "Cântă predominant pop?",
+          "da": { "entitate": { "nume": "Taylor Swift", "domeniu": "vedetă", "tip": "cântăreață" } },
+          "nu": { "entitate": { "nume": "Adele", "domeniu": "vedetă", "tip": "cântăreață" } }
+        },
+        "nu": {
+          "intrebare": "Este cunoscut/ă pentru muzică latino?",
+          "da": { "entitate": { "nume": "Shakira", "domeniu": "vedetă", "tip": "cântăreață" } },
+          "nu": { "entitate": { "nume": "Ed Sheeran", "domeniu": "vedetă", "tip": "cântăreț" } }
+        }
+      },
+      "nu": {
+        "intrebare": "Este sportiv/ă de top?",
+        "da": {
+          "intrebare": "Este fotbalist?",
+          "da": {
+            "intrebare": "A purtat numărul 10 la Barcelona?",
+            "da": { "entitate": { "nume": "Lionel Messi", "domeniu": "vedetă", "tip": "fotbalist" } },
+            "nu": { "entitate": { "nume": "Cristiano Ronaldo", "domeniu": "vedetă", "tip": "fotbalist" } }
+          },
+          "nu": {
+            "intrebare": "Este tenismen?",
+            "da": { "entitate": { "nume": "Novak Djokovic", "domeniu": "vedetă", "tip": "tenismen" } },
+            "nu": { "entitate": { "nume": "Michael Jordan", "domeniu": "vedetă", "tip": "baschetbalist" } }
+          }
+        },
+        "nu": {
+          "intrebare": "Este creator online foarte urmărit?",
+          "da": { "entitate": { "nume": "MrBeast", "domeniu": "vedetă", "tip": "creator online" } },
+          "nu": { "entitate": { "nume": "Elon Musk", "domeniu": "vedetă", "tip": "antreprenor" } }
+        }
+      }
+    }
+  }
+}

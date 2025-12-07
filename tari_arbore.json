@@ -1,0 +1,97 @@
+
+{
+  "tema": "tari",
+  "radacina": {
+    "intrebare": "Este în Europa?",
+    "da": {
+      "intrebare": "Este în Uniunea Europeană?",
+      "da": {
+        "intrebare": "Limba oficială este romanică?",
+        "da": {
+          "intrebare": "Este peninsulară?",
+          "da": { "entitate": { "nume": "Italia", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": {
+            "intrebare": "Are ieșire la Marea Neagră?",
+            "da": { "entitate": { "nume": "România", "domeniu": "țară", "tip": "stat suveran" } },
+            "nu": { "entitate": { "nume": "Franța", "domeniu": "țară", "tip": "stat suveran" } }
+          }
+        },
+        "nu": {
+          "intrebare": "Are ieșire la Marea Nordului?",
+          "da": { "entitate": { "nume": "Germania", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": {
+            "intrebare": "Este o țară fără ieșire la mare?",
+            "da": { "entitate": { "nume": "Austria", "domeniu": "țară", "tip": "stat suveran" } },
+            "nu": { "entitate": { "nume": "Polonia", "domeniu": "țară", "tip": "stat suveran" } }
+          }
+        }
+      },
+      "nu": {
+        "intrebare": "Face parte din zona Balcanilor?",
+        "da": {
+          "intrebare": "Are capitala Belgrad?",
+          "da": { "entitate": { "nume": "Serbia", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": { "entitate": { "nume": "Albania", "domeniu": "țară", "tip": "stat suveran" } }
+        },
+        "nu": {
+          "intrebare": "Are capitala Oslo?",
+          "da": { "entitate": { "nume": "Norvegia", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": { "entitate": { "nume": "Ucraina", "domeniu": "țară", "tip": "stat suveran" } }
+        }
+      }
+    },
+    "nu": {
+      "intrebare": "Este în Asia?",
+      "da": {
+        "intrebare": "Este o țară insulară?",
+        "da": {
+          "intrebare": "Este în Pacificul de Vest?",
+          "da": { "entitate": { "nume": "Japonia", "domeniu": "țară", "tip": "stat insular" } },
+          "nu": { "entitate": { "nume": "Sri Lanka", "domeniu": "țară", "tip": "stat insular" } }
+        },
+        "nu": {
+          "intrebare": "Are limba hindi ca limbă oficială?",
+          "da": { "entitate": { "nume": "India", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": { "entitate": { "nume": "China", "domeniu": "țară", "tip": "stat suveran" } }
+        }
+      },
+      "nu": {
+        "intrebare": "Este în America de Nord?",
+        "da": {
+          "intrebare": "Are capitala Ottawa?",
+          "da": { "entitate": { "nume": "Canada", "domeniu": "țară", "tip": "stat suveran" } },
+          "nu": {
+            "intrebare": "Are capitala Ciudad de Mexico?",
+            "da": { "entitate": { "nume": "Mexic", "domeniu": "țară", "tip": "stat suveran" } },
+            "nu": { "entitate": { "nume": "Statele Unite ale Americii", "domeniu": "țară", "tip": "federație" } }
+          }
+        },
+        "nu": {
+          "intrebare": "Este în America de Sud?",
+          "da": {
+            "intrebare": "Se vorbește predominant portugheză?",
+            "da": { "entitate": { "nume": "Brazilia", "domeniu": "țară", "tip": "stat suveran" } },
+            "nu": { "entitate": { "nume": "Argentina", "domeniu": "țară", "tip": "stat suveran" } }
+          },
+          "nu": {
+            "intrebare": "Este în Africa?",
+            "da": {
+              "intrebare": "Are ieșire la Marea Mediterană?",
+              "da": { "entitate": { "nume": "Egipt", "domeniu": "țară", "tip": "stat suveran" } },
+              "nu": { "entitate": { "nume": "Nigeria", "domeniu": "țară", "tip": "stat suveran" } }
+            },
+            "nu": {
+              "intrebare": "Este în Oceania?",
+              "da": {
+                "intrebare": "Este o țară-continent?",
+                "da": { "entitate": { "nume": "Australia", "domeniu": "țară", "tip": "stat suveran" } },
+                "nu": { "entitate": { "nume": "Noua Zeelandă", "domeniu": "țară", "tip": "stat suveran" } }
+              },
+              "nu": { "entitate": { "nume": "Maroc", "domeniu": "țară", "tip": "stat suveran" } }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+Brazilia
+
+--- Verificari Structura & R3 ---
+Repo copiat: ManagerRaspunsuri{ teme=[animale(39 noduri), tari(47 noduri), vedete(33 noduri)] }
+Arbore curent (Adancime): 8
