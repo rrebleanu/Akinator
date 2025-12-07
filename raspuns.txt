@@ -1,5 +1,11 @@
-Brazilia
+Intrebare: Este în Europa? (da/nu)?
+Intrebare: Este în Asia? (da/nu)?
+Intrebare: Este în America de Nord? (da/nu)?
+Intrebare: Este în America de Sud? (da/nu)?
+Intrebare: Este în Africa? (da/nu)?
+Intrebare: Are ieșire la Marea Mediterană? (da/nu)?
+M-am gandit la: Egipt. E corect (da/nu)?
+Egipt
 
 --- Verificari Structura & R3 ---
-Repo copiat: ManagerRaspunsuri{ teme=[animale(39 noduri), tari(47 noduri), vedete(33 noduri)] }
-Arbore curent (Adancime): 8
+Repo copiat: ManagerRaspunsuri{ teme=[animale(7 noduri), tari(8 noduri), vedete(0 noduri)] }

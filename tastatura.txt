@@ -2,6 +2,7 @@ tari
 nu
 nu
 nu
+nu
 da
 da
 da
